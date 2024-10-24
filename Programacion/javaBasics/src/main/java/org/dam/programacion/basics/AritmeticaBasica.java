@@ -1,6 +1,18 @@
 package org.dam.programacion.basics;
 
 public class AritmeticaBasica {
+    /*
+    * Ejercicio 2: Operaciones aritméticas básicas
+    * Objetivo: Practicar operaciones matemáticas con operadores aritméticos.
+    * Instrucciones:
+    * 1. Declara dos variables enteras a y b con los valores 8 y 3 respectivamente.
+    * 2. Calcula e imprime los resultados de las siguientes operaciones:
+    * - Suma (a + b)
+    * - Resta (a - b)
+    * - Multiplicación (a * b)
+    * - División (a / b)
+    * - Módulo (a % b)
+    */
     public static void main(String[] args) {
         int numeroA = 8;
         int numeroB = 3;
