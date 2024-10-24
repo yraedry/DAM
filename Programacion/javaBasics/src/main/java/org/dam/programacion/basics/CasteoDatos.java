@@ -10,6 +10,7 @@ public class CasteoDatos {
 
     /**
      * metodo para generar un numero de tipo int entre el 0 y 100
+     * @param precio variable a castear
      * @return retorna un numero en int
      */
     private static int generarInt(double precio){

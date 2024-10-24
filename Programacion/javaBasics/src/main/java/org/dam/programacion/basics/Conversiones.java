@@ -10,10 +10,19 @@ public class Conversiones {
         System.out.println("La cadena transformado a numero es " + textoEntero);
     }
 
+    /**
+     * metodo para transformar un  numero entero en una cadena
+     * @param numero numero
+     * @return retorna el numero como cadena
+     */
     private static String transformarCadena(int numero){
         return String.valueOf(numero);
     }
-
+    /**
+     * metodo para transformar una cadena en un numero entero
+     * @param texto numero
+     * @return retorna la cadena como un numero entero
+     */
     private static int transformarEntero(String texto){
         return Integer.parseInt(texto);
     }

@@ -9,19 +9,39 @@ public class Calculadora {
         System.out.println("La multiplicacion de los numeros es " + multiplicacion(numeroA, numeroB));
         System.out.println("La division de los numeros es " + division(numeroA, numeroB));
     }
-
+    /**
+     * metodo para sumar dos numeros
+     * @param a primer numero
+     * @param b segundo numero
+     * @return retorna la suma en double
+     */
     private static double suma(double a, double b){
         return a + b;
     }
-
+    /**
+     * metodo para restar dos numeros
+     * @param a primer numero
+     * @param b segundo numero
+     * @return retorna la resta en double
+     */
     private static double resta(double a, double b){
         return a - b;
     }
-
+    /**
+     * metodo para multiplicar dos numeros
+     * @param a primer numero
+     * @param b segundo numero
+     * @return retorna la multiplicacion en double
+     */
     private static double multiplicacion(double a, double b){
         return a * b;
     }
-
+    /**
+     * metodo para dividir dos numeros
+     * @param a primer numero
+     * @param b segundo numero
+     * @return retorna la division en double
+     */
     private static double division(double a, double b){
         return a / b;
     }
