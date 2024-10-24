@@ -1,4 +1,4 @@
-package org.dam.programacion;
+package org.dam.programacion.basics;
 
 import java.util.Scanner;
 

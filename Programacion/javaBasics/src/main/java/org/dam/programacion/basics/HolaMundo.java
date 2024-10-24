@@ -1,5 +1,4 @@
-package org.dam.programacion;
-
+package org.dam.programacion.basics;
 
 public class HolaMundo {
     public static void main(String[] args) {

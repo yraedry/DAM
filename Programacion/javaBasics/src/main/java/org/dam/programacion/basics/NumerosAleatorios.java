@@ -1,8 +1,10 @@
-package org.dam.programacion;
+package org.dam.programacion.basics;
 
 
 public class NumerosAleatorios {
+
     public static void main(String[] args) {
+        
         System.out.println("El valor de la variable byte es: " + generarByte());
         System.out.println("El valor de la variable short es: " + generarShort());
         System.out.println("El valor de la variable int es: " + generarInt());
