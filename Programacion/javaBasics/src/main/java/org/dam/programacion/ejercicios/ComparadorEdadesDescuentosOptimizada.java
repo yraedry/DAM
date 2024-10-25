@@ -48,12 +48,8 @@ public class ComparadorEdadesDescuentosOptimizada {
         int menor = edades[0];
         //recorremos el array para ir comprobando
         for(int edad : edades){
-            if(edad > mayor){
-                mayor = edad;
-            }
-            if(edad < menor){
-                menor = edad;
-            }
+            mayor = edad > mayor ? edad : mayor;
+            menor = edad < menor ? edad : menor;
         }
         System.out.println("la persona con mayor edad tiene " + mayor);
         System.out.println("la persona con menos edad tiene " + menor);
