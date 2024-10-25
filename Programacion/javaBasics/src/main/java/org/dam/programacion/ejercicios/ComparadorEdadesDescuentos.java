@@ -94,5 +94,4 @@ public class ComparadorEdadesDescuentos {
         System.out.println("Hay un total de " + contMayoresEdad + " personas que son mayores de edad");
         return contMayoresEdad;
     }
-
 }
