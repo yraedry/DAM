@@ -2,8 +2,8 @@ package org.dam.programacion.ejercicios;
 
 public class ComparadorEdadesDescuentos {
 
-    /*
-    *
+    /**
+    * @author adrian nunez sanchez
     * Declara cuatro variables de tipo int para representar las edades de cuatro personas.
     * Declara una variable double para representar el precio original de un producto, y una variable int para representar el descuento en porcentaje.
     * Usa operadores booleanos para comparar las edades de las personas y establecer quién es la más joven y quién es la mayor. (Asume que no hay edades iguales para simplificarlo.)
