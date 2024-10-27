@@ -1,4 +1,4 @@
-name: Ejecutar Codgio Java
+name: Ejecutar Codigo Java
 
 on:
   workflow_run:
