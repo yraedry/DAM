@@ -27,7 +27,7 @@ jobs:
         
       # Paso 4: Guardar el archivo .jar como artefacto
       - name: Save JAR file as artifact
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v4
         with:
           name: java-app
           path: Programacion/javaBasics/target/*.jar  
@@ -49,7 +49,7 @@ jobs:
         run: mvn -B package --file Programacion/javaBasics/pom.xml
         # Paso 4: Subir dependency graph para Dependabot
       - name: Dependency graph submission
-        uses: actions/dependency-review-action@latest
+        uses: actions/dependency-review-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
   # Job 2: Ejecución del archivo .jar (depende del job 'build')
@@ -69,7 +69,7 @@ jobs:
 
       # Descargar el artefacto .jar generado
       - name: Download JAR artifact
-        uses: actions/download-artifact@latest
+        uses: actions/download-artifact@v4
         with:
           name: java-app  # Nombre del artefacto guardado en el job 'build'
 
