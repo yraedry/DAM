@@ -65,7 +65,7 @@ jobs:
         id: determine_class
         run: |
           # Obtener la clase principal del POM
-          CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -n 1 | tr -d '\r')
+          CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.manifest.mainClass --file Programacion/javaBasics/pom.xml | tail -n 1 | tr -d '\r')
           if [ -n "${{ github.event.inputs.className }}" ]; then
             # Usar la clase pasada como parámetro si está presente
             CLASS_NAME="${{ github.event.inputs.className }}"
