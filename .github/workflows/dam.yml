@@ -37,6 +37,7 @@ jobs:
         run: |
           MAIN_CLASS=$(mvn help:effective-pom | grep "mainClass" | tail -n 1 | awk -F '[<>]' '{print $3}' | awk -F '.' '{print $(NF)}' | awk '{sub(/Vacio$/, ""); print $0".jar"}')
           echo "jar_name=$MAIN_CLASS" >> $GITHUB_ENV
+          echo "The JAR name is: $MAIN_CLASS"
 
       # Paso 5: Guardar el JAR como artefacto
       - name: Save JAR file as artifact
