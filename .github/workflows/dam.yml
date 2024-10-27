@@ -53,23 +53,23 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
 
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ github.event.inputs.className || 'default' }}.jar"  # Usar el nombre de clase si se proporciona
+          
       - name: Determine main class
         id: determine_class
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
             # Obtener la clase principal del POM
-            CLASS_NAME=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.build.finalName}' exec:exec | tail -1)
+            CLASS_NAME=$(mvn -q exec:exec -Dexec.executable="echo" -Dexec.args='${project.build.finalName}' --file Programacion/javaBasics/pom.xml | tail -1)
             echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           else
             # Usar la clase pasada como parámetro
             CLASS_NAME="${{ github.event.inputs.className }}"
             echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           fi
-
-      - name: Download JAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: "${{ github.event.inputs.className || 'default' }}.jar"  # Usar el nombre de clase si se proporciona
 
       - name: Run specified Java Application
         run: |
