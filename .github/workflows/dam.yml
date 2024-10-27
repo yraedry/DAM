@@ -26,6 +26,7 @@ jobs:
           java-version: '23' 
           distribution: 'temurin'
           cache: maven
+          
       # Paso 3: Construcción con Maven
       - name: Build with Maven
         run: mvn -B clean package --file Programacion/javaBasics/pom.xml       
@@ -34,7 +35,7 @@ jobs:
       - name: Save JAR file as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: java-app
+          name: "${{ github.event.inputs.className }}" 
           path: Programacion/javaBasics/target/*.jar
 
   # Job 2: Ejecución del archivo .jar (depende del job 'build')
@@ -56,7 +57,7 @@ jobs:
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
-          name: java-app  # Nombre del artefacto guardado en el job 'build'
+          name: "${{ github.event.inputs.className }}"  # Nombre del artefacto guardado en el job 'build'
           
       # Ejecutar el archivo .jar descargado
       - name: Determine class to run
