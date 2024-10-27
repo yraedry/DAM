@@ -80,7 +80,7 @@ jobs:
             exit 1
           fi
           echo "Ejecutando: $CLASS_NAME"
-          java -cp "$JAR_FILE" "$CLASS_NAME"
+          java -jar "$JAR_FILE"
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
