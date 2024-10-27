@@ -29,6 +29,6 @@ jobs:
 
       # Paso 4: Subir dependency graph para Dependabot
       - name: Upload dependency graph for Dependabot
-        uses: github/dependency-submission-action@v3
+        uses: advanced-security/maven-dependency-submission-action@v1.3.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
