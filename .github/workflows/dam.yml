@@ -31,7 +31,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package --file Programacion/javaBasics/pom.xml
         
-      # Paso 4: Obtener el nombre de la clase principal y renombrar el JAR
+      # Paso 4: Obtener el nombre de la clase principal
       - name: Get main class and rename JAR
         id: get_jar_name
         run: |
