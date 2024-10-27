@@ -24,13 +24,6 @@ jobs:
       # Paso 3: Construcción con Maven
       - name: Build with Maven
         run: mvn -B package --file Programacion/javaBasics/pom.xml
-        
-      # Paso 4: Guardar el archivo .jar como artefacto
-      - name: Save JAR file as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app
-          path: Programacion/javaBasics/target/*.jar  
           
   # Job 2: Guardar el archivo .jar como artefacto   
   save_artifact:
