@@ -6,13 +6,18 @@ import java.util.Scanner;
 public class LecturaTeclado {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in) ;
-        numAlumnos(entrada);
-        //limpiamos el buffer
-        entrada.nextLine();
-        nombreCompleto(entrada);
-        notaMedia(entrada);
+        try {
+            numAlumnos(entrada);
+            //limpiamos el buffer
+            entrada.nextLine();
+            nombreCompleto(entrada);
+            notaMedia(entrada);
+        }catch(NoSuchElementException e){
+            System.out.println("No se proporcionó la entrada esperada.");
+        }
         //cerramos el objeto scanner
         entrada.close();
+
     }
 
     private static void numAlumnos(Scanner entrada){
