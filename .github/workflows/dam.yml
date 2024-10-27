@@ -5,6 +5,11 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      className:
+        description: 'Nombre de la clase con main a ejecutar'
+        required: false
 
 jobs:
   build:
@@ -56,12 +61,13 @@ jobs:
       # Ejecutar el archivo .jar descargado
       - name: Run Java Application
         run: |
-          JAR_FILE=$(find . -name "*.jar" | head -n 1)
-          if [ -z "$JAR_FILE" ]; then
-            echo "No se encontró ningún archivo JAR."
-            exit 1
+          if [ -z "${{ github.event.inputs.className }}" ]; then
+            # Si no se pasa ningún parámetro, ejecuta la clase principal predeterminada
+            java -jar Programacion/javaBasics/target/*.jar
+          else
+            # Si se pasa un parámetro, ejecuta la clase especificada
+            java -cp Programacion/javaBasics/target/*.jar "${{ github.event.inputs.className }}"
           fi
-          java -jar "$JAR_FILE"
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
