@@ -35,7 +35,7 @@ jobs:
         
       # Paso  1: Descargar el artefacto .jar generado en el job 'build'
       - name: Download JAR artifact
-        uses: actions/download-artifact@latest
+        uses: actions/download-artifact@v4
         with:
           name: java-app  # Nombre del artefacto guardado en el job 'build'
           
