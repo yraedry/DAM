@@ -1,5 +1,6 @@
 package org.dam.programacion.basics;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class ComprobarParesImpares {
@@ -12,15 +13,20 @@ public class ComprobarParesImpares {
      * @return retorna una cadena indicando si el numero es par o impar
      */
     private static String comprobarNumeros(){
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Ingrese un numero: ");
         String resultado;
-        int numero = entrada.nextInt();
-        if (comprobarPar(numero)) {
-           resultado = "El numero " + numero + " es par";
-        } else {
-            resultado = "El numero " + numero + " es impar";
+        try {
+            Scanner entrada = new Scanner(System.in);
+            System.out.println("Ingrese un numero: ");
+            int numero = entrada.nextInt();
+            if (comprobarPar(numero)) {
+                resultado = "El numero " + numero + " es par";
+            } else {
+                resultado = "El numero " + numero + " es impar";
+            }
+        } catch (NoSuchElementException e) {
+            resultado = "No se proporcionó la entrada esperada.";
         }
+
         return resultado;
     }
 
