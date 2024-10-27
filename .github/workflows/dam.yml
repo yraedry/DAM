@@ -58,9 +58,6 @@ jobs:
         with:
           name: java-app  # Nombre del artefacto guardado en el job 'build'
           
-      - name: List JAR files
-        run: ls -l
-        
       # Ejecutar el archivo .jar descargado
       - name: Run All Java Applications
         run: |
@@ -69,21 +66,13 @@ jobs:
             echo "No se encontró ningún archivo JAR."
             exit 1
           fi
-          
-          # Crear un archivo temporal para la entrada
-          INPUT_FILE=$(mktemp)
-          echo "valor1" > $INPUT_FILE
-          echo "valor2" >> $INPUT_FILE 
-          
+                
           # Encuentra todas las clases con un método main en el JAR
           for CLASS in $(jar tf "$JAR_FILE" | grep '.class'); do
             CLASS_NAME=$(echo "$CLASS" | sed 's|/|.|g' | sed 's|\.class$||')  # Convierte la ruta de clase en formato Java
             echo "Ejecutando: $CLASS_NAME"
             java -cp "$JAR_FILE" "$CLASS_NAME"
           done
-
-          # Eliminar el archivo temporal
-          rm $INPUT_FILE
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
