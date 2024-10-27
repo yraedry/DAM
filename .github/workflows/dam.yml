@@ -58,12 +58,12 @@ jobs:
         with:
          name: "javaBasics.jar" # Usar el nombre de clase si se proporciona
           
-      - name: Determine main class
+      - name: Determine class to run
         id: determine_class
         run: |
           if [ "${{ github.event_name }}" == "push" ]; then
             # Obtener la clase principal del POM
-            CLASS_NAME=$(mvn -q exec:exec -Dexec.executable="echo" -Dexec.args='${project.build.finalName}' --file Programacion/javaBasics/pom.xml | tail -1)
+            CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -1)
             echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           else
             # Usar la clase pasada como parámetro
@@ -79,7 +79,7 @@ jobs:
             exit 1
           fi
           echo "Ejecutando: $CLASS_NAME"
-          java -cp "$JAR_FILE" "$CLASS_NAME"
+          java -cp "$JAR_FILE" "$CLASS_NAME"  # Asegúrate de que CLASS_NAME tenga el formato correcto
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
