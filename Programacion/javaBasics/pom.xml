@@ -25,7 +25,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.dam.programacion.basics.AritmeticaBasica</mainClass>
+                            <mainClass>org.dam.programacion.ejercicios.extendidos.TableroAjedrez</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
