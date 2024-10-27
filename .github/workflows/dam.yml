@@ -64,7 +64,7 @@ jobs:
       # Ejecutar el archivo .jar descargado
       - name: Run All Java Applications
         run: |
-          JAR_FILE=$(find Programacion/javaBasics/target -name "*.jar" | head -n 1)
+          JAR_FILE=$(find . -name "*.jar" | head -n 1)
           if [ -z "$JAR_FILE" ]; then
             echo "No se encontró ningún archivo JAR."
             exit 1
