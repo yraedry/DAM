@@ -59,7 +59,7 @@ jobs:
           name: java-app  # Nombre del artefacto guardado en el job 'build'
           
       - name: List JAR files
-        run: ls -l Programacion/javaBasics/target/
+        run: ls -l
         
       # Ejecutar el archivo .jar descargado
       - name: Run All Java Applications
