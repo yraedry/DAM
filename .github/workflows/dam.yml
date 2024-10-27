@@ -32,8 +32,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # Paso 1: Guardar el archivo .jar como artefacto
+        
+      # Paso  1: Descargar el artefacto .jar generado en el job 'build'
+      - name: Download JAR artifact
+        uses: actions/download-artifact@latest
+        with:
+          name: java-app  # Nombre del artefacto guardado en el job 'build'
+          
+      # Paso 2: Guardar el archivo .jar como artefacto
       - name: Save JAR file as artifact
         uses: actions/upload-artifact@v4
         with:
