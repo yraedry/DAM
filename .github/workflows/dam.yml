@@ -59,20 +59,28 @@ jobs:
           name: java-app  # Nombre del artefacto guardado en el job 'build'
           
       # Ejecutar el archivo .jar descargado
-      - name: Run All Java Applications
+      - name: Determine class to run
+        id: determine_class
+        run: |
+          if [ -z "${{ github.event.inputs.className }}" ]; then
+            # Si no se proporciona un nombre de clase, usar el del POM
+            JAR_FILE=$(find . -name "*.jar" | head -n 1)
+            CLASS_NAME=$(jar tf "$JAR_FILE" | grep -m 1 'Main-Class' | cut -d ' ' -f 2)
+          else
+            # Usar la clase pasada como parámetro
+            CLASS_NAME="${{ github.event.inputs.className }}"
+          fi
+          echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV  # Guardar el nombre de clase en una variable de entorno
+
+      - name: Run specified Java Application
         run: |
           JAR_FILE=$(find . -name "*.jar" | head -n 1)
           if [ -z "$JAR_FILE" ]; then
             echo "No se encontró ningún archivo JAR."
             exit 1
           fi
-                
-          # Encuentra todas las clases con un método main en el JAR
-          for CLASS in $(jar tf "$JAR_FILE" | grep '.class'); do
-            CLASS_NAME=$(echo "$CLASS" | sed 's|/|.|g' | sed 's|\.class$||')  # Convierte la ruta de clase en formato Java
-            echo "Ejecutando: $CLASS_NAME"
-            java -cp "$JAR_FILE" "$CLASS_NAME"
-          done
+          echo "Ejecutando: $CLASS_NAME"
+          java -cp "$JAR_FILE" "$CLASS_NAME"
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
