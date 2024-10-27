@@ -35,7 +35,7 @@ jobs:
         id: save_artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "javaBasics.jar"
+          name: javaBasics.jar
           path: Programacion/javaBasics/target/*.jar
 
   # Job 2: Ejecución del archivo .jar (depende del job 'build')
@@ -56,8 +56,9 @@ jobs:
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
-         name: "javaBasics.jar" # Usar el nombre de clase si se proporciona
-          
+         name: javaBasics.jar # Usar el nombre de clase si se proporciona
+      - name: List files
+        run: ls -la
       - name: Determine class to run
         id: determine_class
         run: |
