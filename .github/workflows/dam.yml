@@ -31,11 +31,11 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package --file Programacion/javaBasics/pom.xml       
           
-      # Paso 4: Guardar el archivo .jar como artefacto
       - name: Save JAR file as artifact
+        id: save_artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "${{ github.event.inputs.className }}" 
+          name: "${{ github.event.inputs.className || 'default' }}.jar"  # Usar el nombre de clase si se proporciona, sino usar un nombre por defecto
           path: Programacion/javaBasics/target/*.jar
 
   # Job 2: Ejecución del archivo .jar (depende del job 'build')
@@ -53,25 +53,23 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
 
-      # Descargar el artefacto .jar generado
-      - name: Download JAR artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: "${{ github.event.inputs.className }}"  # Nombre del artefacto guardado en el job 'build'
-          
-      # Ejecutar el archivo .jar descargado
-      - name: Determine class to run
+      - name: Determine main class
         id: determine_class
         run: |
-          if [ -z "${{ github.event.inputs.className }}" ]; then
-            # Si no se proporciona un nombre de clase, usar el del POM
-            JAR_FILE=$(find . -name "*.jar" | head -n 1)
-            CLASS_NAME=$(jar tf "$JAR_FILE" | grep -m 1 'Main-Class' | cut -d ' ' -f 2)
+          if [ "${{ github.event_name }}" == "push" ]; then
+            # Obtener la clase principal del POM
+            CLASS_NAME=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.build.finalName}' exec:exec | tail -1)
+            echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           else
             # Usar la clase pasada como parámetro
             CLASS_NAME="${{ github.event.inputs.className }}"
+            echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           fi
-          echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV  # Guardar el nombre de clase en una variable de entorno
+
+      - name: Download JAR artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: "${{ github.event.inputs.className || 'default' }}.jar"  # Usar el nombre de clase si se proporciona
 
       - name: Run specified Java Application
         run: |
