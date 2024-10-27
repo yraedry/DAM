@@ -68,6 +68,10 @@ jobs:
           else
             # Usar la clase pasada como parámetro
             CLASS_NAME="${{ github.event.inputs.className }}"
+            if [ -z "$CLASS_NAME" ]; then
+              # Si no se proporciona un nombre de clase, usar el del POM
+              CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -1)
+            fi
             echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           fi
 
@@ -79,7 +83,7 @@ jobs:
             exit 1
           fi
           echo "Ejecutando: $CLASS_NAME"
-          java -cp "$JAR_FILE" "$CLASS_NAME"  # Asegúrate de que CLASS_NAME tenga el formato correcto
+          java -cp "$JAR_FILE" "$CLASS_NAME"
 
   # Job 3: Dependency Review en pull requests
   dependency_review:
