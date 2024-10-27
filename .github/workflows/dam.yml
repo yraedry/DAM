@@ -57,24 +57,20 @@ jobs:
         uses: actions/download-artifact@v4
         with:
          name: javaBasics.jar # Usar el nombre de clase si se proporciona
+         
       - name: List files
         run: ls -la
+        
       - name: Determine class to run
         id: determine_class
         run: |
-          if [ "${{ github.event_name }}" == "push" ]; then
-            # Obtener la clase principal del POM
-            CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -1)
-            echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
-          else
-            # Usar la clase pasada como parámetro
+          # Obtener la clase principal del POM
+          CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -n 1 | tr -d '\r')
+          if [ -n "${{ github.event.inputs.className }}" ]; then
+            # Usar la clase pasada como parámetro si está presente
             CLASS_NAME="${{ github.event.inputs.className }}"
-            if [ -z "$CLASS_NAME" ]; then
-              # Si no se proporciona un nombre de clase, usar el del POM
-              CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.mainClass --file Programacion/javaBasics/pom.xml | tail -1)
-            fi
-            echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
           fi
+          echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
 
       - name: Run specified Java Application
         run: |
