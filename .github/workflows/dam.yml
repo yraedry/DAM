@@ -58,20 +58,6 @@ jobs:
         with:
          name: javaBasics.jar # Usar el nombre de clase si se proporciona
          
-      - name: List files
-        run: ls -la
-        
-      - name: Determine class to run
-        id: determine_class
-        run: |
-          # Obtener la clase principal del POM
-          CLASS_NAME=$(mvn -q help:evaluate -Dexpression=project.build.plugins[0].configuration.archive.manifest.mainClass --file Programacion/javaBasics/pom.xml | tail -n 1 | tr -d '\r')
-          if [ -n "${{ github.event.inputs.className }}" ]; then
-            # Usar la clase pasada como parámetro si está presente
-            CLASS_NAME="${{ github.event.inputs.className }}"
-          fi
-          echo "CLASS_NAME=$CLASS_NAME" >> $GITHUB_ENV
-
       - name: Run specified Java Application
         run: |
           JAR_FILE=$(find . -name "*.jar" | head -n 1)
@@ -79,7 +65,7 @@ jobs:
             echo "No se encontró ningún archivo JAR."
             exit 1
           fi
-          echo "Ejecutando: $CLASS_NAME"
+          echo "Ejecutando: $JAR_FILE"
           java -jar "$JAR_FILE"
 
   # Job 3: Dependency Review en pull requests
