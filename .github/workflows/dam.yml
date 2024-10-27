@@ -35,7 +35,7 @@ jobs:
         id: save_artifact
         uses: actions/upload-artifact@v4
         with:
-          name: javaBasics.jar
+          name: mvn help:effective-pom | grep "mainClass" | tail -n 1 | awk -F '[<>]' '{print $3}' | awk -F '.' '{print $(NF)}' | awk '{sub(/Vacio$/, ""); print $0".jar"}'
           path: Programacion/javaBasics/target/*.jar
 
   # Job 2: Ejecución del archivo .jar (depende del job 'build')
@@ -56,7 +56,7 @@ jobs:
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
         with:
-         name: javaBasics.jar # Usar el nombre de clase si se proporciona
+         name: mvn help:effective-pom | grep "mainClass" | tail -n 1 | awk -F '[<>]' '{print $3}' | awk -F '.' '{print $(NF)}' | awk '{sub(/Vacio$/, ""); print $0".jar"}' # Usar el nombre de clase si se proporciona
          
       - name: Run specified Java Application
         run: |
