@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios;
+package org.dam.programacion.ejercicios.extendidos;
 
 public class TableroAjedrez {
 

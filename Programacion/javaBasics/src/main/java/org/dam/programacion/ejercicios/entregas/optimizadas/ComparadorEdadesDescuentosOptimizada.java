@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios;
+package org.dam.programacion.ejercicios.entregas.optimizadas;
 
 public class ComparadorEdadesDescuentosOptimizada {
     /**
