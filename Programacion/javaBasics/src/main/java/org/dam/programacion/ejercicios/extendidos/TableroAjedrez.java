@@ -8,7 +8,6 @@ public class TableroAjedrez {
      * • Paso 2. Poner las piezas negras de la octava fila.
      * • Paso 3. Añadir al dibujo la línea inferior.
      * • Paso 4. Dibujar la fila intermedia con la casilla blanca y la casilla negra.
-     * • Paso 5. Repetir la la sos edia de unta competare alero mixto.
      */
      //Tablero
     private static final int TAMANIO = 8;
