@@ -23,12 +23,14 @@ public class BatallaNaval {
     public static void main(String[] args) {
         tableroOculto = new int[TAMANNIO][TAMANNIO];
         tableroJugador = new char[TAMANNIO][TAMANNIO];
-        inicializarTablero();
-        inicializarTableroUsuario();
-        iniciarBatalla();
+
+        BatallaNaval batallaNaval = new BatallaNaval();
+        batallaNaval.inicializarTablero();
+        batallaNaval.inicializarTableroUsuario();
+        batallaNaval.iniciarBatalla();
     }
 
-    private static void inicializarTablero(){
+    private void inicializarTablero(){
         int numBarcos = 3;
         Random random = new Random();
         for(int j =0; j < numBarcos;j++){
@@ -44,7 +46,7 @@ public class BatallaNaval {
         }
     }
 
-    private static void inicializarTableroUsuario(){
+    private void inicializarTableroUsuario(){
         for(int i =0; i < tableroJugador.length;i++){
             for(int x=0; x < tableroJugador[i].length;x++){
                 tableroJugador[i][x] = 'ˆ';
@@ -52,14 +54,14 @@ public class BatallaNaval {
         }
     }
 
-    private static void mostrarEncabezado(){
+    private void mostrarEncabezado(){
         System.out.print("  "); // Espacio inicial para alinear los índices de las filas
         for (char col = 'A'; col < 'A' + TAMANNIO; col++) {
             System.out.printf(" %c", col);
         }
         System.out.println();
     }
-    private static void mostrarTablero() {
+    private void mostrarTablero() {
         mostrarEncabezado();
         for (int i = 0; i < TAMANNIO; i++) {
             System.out.print(i+ " |");
@@ -77,7 +79,7 @@ public class BatallaNaval {
         System.out.println("-----------------------------------");
     }
 
-    private static void mostrarTableroReal() {
+    private void mostrarTableroReal() {
         mostrarEncabezado();
         for (int i = 0; i < TAMANNIO; i++) {
             System.out.print(i + " |");
@@ -102,7 +104,7 @@ public class BatallaNaval {
    * Salida del tablero:
    * Después de cada turno, muestra el tablero actualizado. Solo las posiciones que el usuario ha adivinado deben revelarse.
  */
-    public static void iniciarBatalla() {
+    public void iniciarBatalla() {
         iniciarTitulo();
         System.out.println("pulsa enter para comenzar el juego!");
         Scanner scanner = new Scanner(System.in);
@@ -155,7 +157,7 @@ public class BatallaNaval {
         scanner.close();
     }
 
-    private static int traductorCoordenadas(Scanner scanner){
+    private int traductorCoordenadas(Scanner scanner){
         int columnna=-1;
         boolean filaValida = false;
         while(!filaValida) {
@@ -190,7 +192,7 @@ public class BatallaNaval {
         return columnna;
     }
 
-    private static void iniciarTitulo(){
+    private void iniciarTitulo(){
         System.out.println("██████╗  █████╗ ████████╗ █████╗ ██╗     ██╗      █████╗     ███╗   ██╗ █████╗ ██╗   ██╗ █████╗ ██╗     ");
         System.out.println("██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██║     ██║     ██╔══██╗    ████╗  ██║██╔══██╗██║   ██║██╔══██╗██║     ");
         System.out.println("██████╔╝███████║   ██║   ███████║██║     ██║     ███████║    ██╔██╗ ██║███████║██║   ██║███████║██║     ");
@@ -199,7 +201,7 @@ public class BatallaNaval {
         System.out.println("╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝    ╚═╝  ╚═══╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝");
     }
 
-    private static void tituloVictoria(){
+    private void tituloVictoria(){
         System.out.println("██╗   ██╗██╗ ██████╗████████╗ ██████╗ ██████╗ ██╗ █████╗ ");
         System.out.println("██║   ██║██║██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██║██╔══██╗");
         System.out.println("██║   ██║██║██║        ██║   ██║   ██║██████╔╝██║███████║");
@@ -207,7 +209,7 @@ public class BatallaNaval {
         System.out.println(" ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║██║██║  ██║");
         System.out.println("  ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝");
     }
-    private static void tituloDerrota(){
+    private void tituloDerrota(){
         System.out.println("██████╗ ███████╗██████╗ ██████╗  ██████╗ ████████╗ █████╗");
         System.out.println("██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗╚══██╔══╝██╔══██╗");
         System.out.println("██║  ██║█████╗  ██████╔╝██████╔╝██║   ██║   ██║   ███████║");
@@ -215,7 +217,7 @@ public class BatallaNaval {
         System.out.println("██████╔╝███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║");
         System.out.println("╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝");
     }
-    private static void tituloAgua(){
+    private void tituloAgua(){
         System.out.println(" █████╗  ██████╗ ██╗   ██╗ █████╗ ");
         System.out.println("██╔══██╗██╔════╝ ██║   ██║██╔══██╗");
         System.out.println("███████║██║  ███╗██║   ██║███████║");
@@ -224,7 +226,7 @@ public class BatallaNaval {
         System.out.println("╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝");
     }
 
-    private static void tituloTocado(){
+    private void tituloTocado(){
         System.out.println("████████╗ ██████╗  ██████╗ █████╗ ██████╗  ██████╗");
         System.out.println("╚══██╔══╝██╔═══██╗██╔════╝██╔══██╗██╔══██╗██╔═══██╗");
         System.out.println("   ██║   ██║   ██║██║     ███████║██║  ██║██║   ██║");
