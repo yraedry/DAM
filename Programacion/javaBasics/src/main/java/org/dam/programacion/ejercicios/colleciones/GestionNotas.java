@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class GestionNotas {
     public static void main(String[] args) {
         String[] estudiante = {"Andres Mateu", "Mar Beamud", "Luis Miguel Richard"};
-        Double[][] notasProgramacion = {{4.00, 4.50, 3.80, 4.20, 3.50}, {8.00, 7.50, 9.00, 8.30, 8.00}, {7.00, 6.50, 7.50, 6.80, 7.50}};
-        Double[][] notasEntornosDesarrollo = {{4.5, 3.0, 4.8, 4.0}, {7.5, 8.2, 7.8, 8.5}, {6.5, 7.0, 7.5, 6.8}};
+        double[][] notasProgramacion = {{4.00, 4.50, 3.80, 4.20, 3.50}, {8.00, 7.50, 9.00, 8.30, 8.00}, {7.00, 6.50, 7.50, 6.80, 7.50}};
+        double[][] notasEntornosDesarrollo = {{4.5, 3.0, 4.8, 4.0}, {7.5, 8.2, 7.8, 8.5}, {6.5, 7.0, 7.5, 6.8}};
         final String ROJO = "\u001B[31m";
         final String RESET = "\u001B[0m";
 
@@ -24,7 +24,7 @@ public class GestionNotas {
             } else {
                 while (true) {
                     String asignatura = null;
-                    Double[][] notas = null;
+                    double[][] notas = null;
                     if (opciones == 1) {
                         asignatura = "programacion";
                         System.out.println("Has entrado a ver las notas de programacion");
@@ -34,9 +34,7 @@ public class GestionNotas {
                         System.out.println("Has entrado a ver las notas de Entornos de Desarrollo");
                         notas = notasEntornosDesarrollo;
                     }
-
                     System.out.println("Que desea hacer");
-
                     System.out.println("1. Ver notas\n" +
                             "2. Cambiar nota\n" +
                             "3. Mostrar nota final\n" +
@@ -44,10 +42,33 @@ public class GestionNotas {
                     int opcionesAsignatura = scanner.nextInt();
                     if (opcionesAsignatura == 1) {
                         System.out.println("Has elegido ver notas");
-                        for (int x = 0; x < notas.length; x++) {
-                            System.out.print(estudiante[x] + ": ");
-                            for (int i = 0; i < notas[x].length; i++) {
-                                System.out.print(notas[x][i] + " ");
+
+                        //Para mostrar el encabezado
+                        for (int x = 0; x < estudiante.length; x++) {
+                            System.out.printf("%-20s", estudiante[x]);
+                        }
+                        System.out.println();
+
+                        //para obtener el maximo de notas y mostrarlas todas
+                        int maxNotas = 0;
+                        for (double[] estudianteNotas : notas) {
+                            if (estudianteNotas.length > maxNotas) {
+                                maxNotas = estudianteNotas.length;
+                            }
+                        }
+
+                        //mostramos las notas en formator tabular
+                        for (int fila = 0; fila < maxNotas; fila++) {
+                            for (int columna = 0; columna < notas.length; columna++) {
+                                if (fila < notas[columna].length) {
+                                    if(notas[columna][fila]  < 5){
+                                        System.out.printf(ROJO + "%-20.2f"+ RESET, notas[columna][fila]);
+                                    }else {
+                                        System.out.printf("%-20.2f", notas[columna][fila]);
+                                    }
+                                }else{
+                                    System.out.printf("%-20s", "");
+                                }
                             }
                             System.out.println();
                         }
@@ -77,7 +98,6 @@ public class GestionNotas {
 
                             }
                             System.out.print(notaFinal);
-
                             System.out.println();
                         }
                     } else if (opcionesAsignatura == 4) {
