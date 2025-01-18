@@ -19,21 +19,20 @@ public class CalculosEstadistica {
         for(int numero : media){
            sumatorio += numero; 
         }
-        
         System.out.println("La media de los numeros es "+ sumatorio / media.length);
     }
     private void calcular(double[] moda){
         double modaCalculada = 0;
         double numeroMaximoCalculado = 0;
-        for (int x =0; x < moda.length; x++){
+        for (double valorModa : moda) {
             int repeticiones = 0;
-            for (int y =0; y < moda.length; y++){
-                if(moda[x] == moda[y]){
+            for (double valor : moda) {
+                if (valorModa == valor) {
                     repeticiones++;
                 }
-                if(repeticiones>numeroMaximoCalculado){
-                    modaCalculada = moda[x];
-                    numeroMaximoCalculado=repeticiones;
+                if (repeticiones > numeroMaximoCalculado) {
+                    modaCalculada = valorModa;
+                    numeroMaximoCalculado = repeticiones;
                 }
             }
         }
