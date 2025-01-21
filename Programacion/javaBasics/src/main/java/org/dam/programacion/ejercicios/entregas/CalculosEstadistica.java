@@ -3,6 +3,12 @@ package org.dam.programacion.ejercicios.entregas;
 import java.util.Arrays;
 
 public class CalculosEstadistica {
+    /*
+    Diferencias entre commit, push y pull
+    El commit se sube los cambios a tu rama local pero aun no han subido a la rama remota
+    El push te sube todos los cambios que tengas en tu rama local a la rama remota
+    El pull te trae todos los cambios que se han producido en la rama remota a tu rama local y hace un merge o rebase implicito en tu rama local
+    */
     public static void main(String[] args) {
         int[] media = {1,2,3,4,5,6,7,8,9};
         double[] moda = {1,1,2,2,2,2,2,5,5,5,6,7,7,7,7};
