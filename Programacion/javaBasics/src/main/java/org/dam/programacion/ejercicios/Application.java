@@ -9,14 +9,17 @@ public class Application {
         Fracciones fraccionesParametro = new Fracciones(6);
 
 
-        System.out.println("Fracción 1: " + fracciones);
-        System.out.println("Fracción 2: " + fraccionesParametros);
-        System.out.println("Fracción 3: " + fraccionesParametro);
+        System.out.println("Fraccion 1: " + fracciones);
+        System.out.println("Fraccion 2: " + fraccionesParametros);
+        System.out.println("Fraccion 3: " + fraccionesParametro);
+
+        System.out.println("Denominador Fraccion 2: " + fraccionesParametros.getDenominador());
+        System.out.println("Numerador Fraccion 3: " + fraccionesParametro.getNumerador());
 
         // Modificar y mostrar valores
         fracciones.setNumerador(2);
         fracciones.setDenominador(3);
-        System.out.println("Fracción 1 modificada: " + fracciones);
+        System.out.println("Fraccion 1 modificada: " + fracciones);
 
         try {
             fracciones.setDenominador(0);
