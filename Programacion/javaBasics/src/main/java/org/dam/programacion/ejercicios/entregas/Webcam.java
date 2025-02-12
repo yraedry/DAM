@@ -11,16 +11,17 @@ public class Webcam {
         this.fps = fps;
         esEncendido = false;
     }
-
-    public boolean encender(){
+    
+  public void encender(){
         System.out.println("Has encendido la webcam");
-        return esEncendido = true;
+        esEncendido = true;
     }
 
-    public boolean apagar(){
+    public void apagar(){
         System.out.println("Has apagado la webcam");
-        return esEncendido = false;
+        esEncendido = false;
     }
+
 
     public void tomarFoto(){
         if(esEncendido){
