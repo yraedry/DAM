@@ -1,4 +1,4 @@
-package com.example.hello_world.hello_world;
+package org.dam.programacion.ejercicios.entregas;
 
 public class Webcam {
     private String resolucion;
