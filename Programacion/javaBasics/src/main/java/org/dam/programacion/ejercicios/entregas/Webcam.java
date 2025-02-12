@@ -35,7 +35,7 @@ public class Webcam {
                 return;
             }
             tamanioArchivo = (ancho * alto * fps) / 1000000.0;
-            System.out.println("Tomando foto con la resolucion "+ resolucion + "y el tamaño es "+ tamanioArchivo);
+            System.out.println("Tomando foto con la resolucion "+ resolucion + " y el tamaño estimado es "+ tamanioArchivo);
         }else{
             System.out.println("Debes encender la webcam antes de tomar una foto");
         }
