@@ -27,7 +27,7 @@ public class Application {
         //     System.out.println("Error al establecer denominador: " + e.getMessage());
         // }
 
-        Webcam webcam = new Webcam("1920x1080", 30, false, 0.0);
+        Webcam webcam = new Webcam("1920x1080", 30);
         webcam.tomarFoto();
         webcam.encender();
         webcam.tomarFoto();

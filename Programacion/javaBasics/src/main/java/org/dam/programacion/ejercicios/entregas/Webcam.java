@@ -6,11 +6,10 @@ public class Webcam {
     private boolean esEncendido;
     private double tamanioArchivo;
 
-    public Webcam(String resolucion, int fps, boolean esEncendido, double tamanioArchivo) {
+    public Webcam(String resolucion, int fps) {
         this.resolucion = resolucion;
         this.fps = fps;
-        this.esEncendido = esEncendido;
-        this.tamanioArchivo = tamanioArchivo;
+        esEncendido = false;
     }
 
     public boolean encender(){
