@@ -30,7 +30,7 @@ public class Webcam {
             try {
                 alto = Integer.parseInt(resolucion.substring(0, resolucion.indexOf("x")));
                 ancho = Integer.parseInt(resolucion.substring(resolucion.indexOf("x") + 1));
-            } catch (StringIndexOutOfBoundsException e) {
+            } catch (StringIndexOutOfBoundsException | NumberFormatException e ) {
                 System.out.println("Error al tomar foto, la resolucion no es correcta");
                 return;
             }
