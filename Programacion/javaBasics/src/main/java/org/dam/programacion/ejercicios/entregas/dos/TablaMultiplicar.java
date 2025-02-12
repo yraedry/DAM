@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios.entregas;
+package org.dam.programacion.ejercicios.entregas.dos;
 
 import java.util.Scanner;
 /*

@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios.entregas;
+package org.dam.programacion.ejercicios.entregas.cinco;
 
 import java.util.Arrays;
 

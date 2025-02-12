@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios.entregas;
+package org.dam.programacion.ejercicios.entregas.cuatro;
 
 import java.util.Random;
 import java.util.Scanner;

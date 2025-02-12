@@ -1,4 +1,4 @@
-package org.dam.programacion.ejercicios.entregas;
+package org.dam.programacion.ejercicios.entregas.tres;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
