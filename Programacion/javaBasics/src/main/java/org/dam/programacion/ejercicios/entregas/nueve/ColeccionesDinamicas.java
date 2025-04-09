@@ -44,7 +44,7 @@ public class ColeccionesDinamicas {
 
     private void agregarCiudad(Scanner sc, ArrayList<String> ciudades){
         System.out.println("Ingresa el nombre de la ciudad");
-        String nombre = sc.next().toLowerCase();
+        var nombre = sc.next().toLowerCase();
         if(ciudades.contains(nombre)){
             System.out.println("La ciudad ya existe, no se permiten ciudades duplicadas");
         }else{
