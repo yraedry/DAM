@@ -51,6 +51,7 @@ public class ColeccionesDinamicas {
             System.out.println("La ciudad ya existe, no se permiten ciudades duplicadas");
         }else{
             ciudades.add(nombre);
+            System.out.println("La ciudad " + nombre  + " se ha agregado correctamente");
         };
     }
 
