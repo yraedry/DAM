@@ -18,6 +18,7 @@ public class ColeccionesDinamicas {
             var opcion = 0;
             try {
                 opcion = sc.nextInt();
+                sc.nextLine(); // limpiar el salto de linea
             } catch (InputMismatchException e) {
                 System.out.println("Por favor ingresa un numero valido");
                 sc.nextLine();
@@ -45,7 +46,7 @@ public class ColeccionesDinamicas {
 
     private void agregarCiudad(Scanner sc, ArrayList<String> ciudades){
         System.out.println("Ingresa el nombre de la ciudad");
-        var nombre = sc.next().toLowerCase();
+        var nombre = sc.nextLine().toLowerCase();
         if(ciudades.contains(nombre)){
             System.out.println("La ciudad ya existe, no se permiten ciudades duplicadas");
         }else{
@@ -66,7 +67,7 @@ public class ColeccionesDinamicas {
 
     private void buscarCiudad(Scanner sc, ArrayList<String> ciudades){
         System.out.println("Ingresa el nombre de la ciudad");
-        var nombre = sc.next().toLowerCase();
+        var nombre = sc.nextLine().toLowerCase();
         if(ciudades.contains(nombre)){
             System.out.println("La ciudad " + nombre  + " ya existe en la lista");
         }else{
@@ -76,7 +77,7 @@ public class ColeccionesDinamicas {
 
     private void eliminarCiudad(Scanner sc, ArrayList<String> ciudades){
         System.out.println("Ingresa el nombre de la ciudad");
-        var nombre = sc.next().toLowerCase();
+        var nombre = sc.nextLine().toLowerCase();
         if(ciudades.contains(nombre)){
             ciudades.remove(nombre);
             System.out.println("La ciudad " + nombre  + " se ha eliminado correctamente");
