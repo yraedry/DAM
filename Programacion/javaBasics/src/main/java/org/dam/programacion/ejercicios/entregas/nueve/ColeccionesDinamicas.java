@@ -9,6 +9,7 @@ public class ColeccionesDinamicas {
     }
 
     private void crearMenu(){
+        System.out.println("Bienvenido a la gestion de ciudades");
         Scanner sc = new Scanner(System.in);
         var salidaBucle  = true;
         ArrayList<String> ciudades = new ArrayList<>();
@@ -33,7 +34,6 @@ public class ColeccionesDinamicas {
     }
 
     private void pintarMenu(){
-        System.out.println("Bienvenido a la gestion de ciudades");
         System.out.println("Que deseas hacer?");
         System.out.println("1. Agregar una ciudad");
         System.out.println("2. Eliminar una ciudad");
