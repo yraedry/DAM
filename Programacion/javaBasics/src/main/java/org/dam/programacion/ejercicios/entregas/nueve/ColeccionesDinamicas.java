@@ -20,7 +20,8 @@ public class ColeccionesDinamicas {
                 opcion = sc.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println("Por favor ingresa un numero valido");
-                crearMenu();
+                sc.nextLine();
+                continue;
             }
             switch(opcion) {
                 case 1 -> agregarCiudad(sc, ciudades);
