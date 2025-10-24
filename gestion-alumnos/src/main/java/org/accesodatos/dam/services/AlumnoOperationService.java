@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 
 public class AlumnoOperationService {
 
-    private static final String PATH_FILE = "gestion-alumnos/src/main/resources/alumnos.xml";
+    private static final String PATH_FILE = "src/main/resources/alumnos.xml";
 
     public void altaAlumno(String nombre, String apellido, int expediente) throws JAXBException {
         Alumnos alumnos = (Alumnos) helperUnmarshall();
@@ -76,7 +76,7 @@ public class AlumnoOperationService {
         Alumnos alumnos = (Alumnos) helperUnmarshall();
         List<Alumno> alumnosXml = alumnos.getAlumno();
         for (Alumno alumno : alumnosXml) {
-            if (alumno.getExpediente() == expediente) {
+            if (alumno.getExpediente() == expediente && alumno.getNota() != null) {
                 System.out.println("la nota del alumno con el expediente " +
                         alumno.getExpediente() + " es " + alumno.getNota());
 
@@ -109,8 +109,10 @@ public class AlumnoOperationService {
         Alumnos alumnos = (Alumnos) helperUnmarshall();
         List<Alumno> alumnosXml = alumnos.getAlumno();
         for(var alumno : alumnosXml){
-            System.out.println("la nota del alumno " + alumno.getNombre() + " " + alumno.getApellido() +
-                    " con expediente " + alumno.getExpediente() + " es de un: " + alumno.getNota());
+            if(alumno.getNota() != null) {
+                System.out.println("la nota del alumno " + alumno.getNombre() + " " + alumno.getApellido() +
+                        " con expediente " + alumno.getExpediente() + " es de un: " + alumno.getNota());
+            }
         }
     }
 
