@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<alumnos>
+    <alumno>
+        <apellido>b</apellido>
+        <expediente>1</expediente>
+        <nombre>a</nombre>
+        <nota>6.0</nota>
+    </alumno>
+</alumnos>

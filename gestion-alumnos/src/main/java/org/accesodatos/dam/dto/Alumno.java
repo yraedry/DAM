@@ -10,4 +10,5 @@ public class Alumno implements Serializable {
     private int expediente;
     private String nombre;
     private String apellido;
+    private Double nota;
 }

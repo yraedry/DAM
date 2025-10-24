@@ -32,7 +32,6 @@ public class Supermercado {
         }
 
     }
-
     private void addDatos(Path path) {
         try {
             boolean continuar = Boolean.TRUE;
